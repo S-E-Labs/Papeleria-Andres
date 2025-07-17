@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Papelería </title>
+    
+    <!-- Fuente de íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- Fondo animado con shaders -->
+    <div class="background-shader"></div>
+    
+    <!-- Contenedor principal del login -->
+    <div class="login-container">
+        <!-- Tarjeta de login -->
+        <div class="login-card">
+            <!-- Encabezado con logo -->
+            <div class="logo-container">
+                <div class="logo-shine"></div> <!-- Efecto de brillo -->
+                <img src="./img/icono.png" alt="Logo Papelería Perruncho" class="logo">
+                <h1 class="logo-text">Papelería<span>Perruncho</span></h1>
+            </div>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm" class="login-form">
+                <!-- Campo de usuario -->
+                <div class="form-group floating">
+                    <input type="text" id="username" name="username" required>
+                    <label for="username">Usuario</label>
+                    <i class="fas fa-user"></i> <!-- Ícono -->
+                    <div class="underline"></div> <!-- Subrayado animado -->
+                </div>
+                
+                <!-- Campo de contraseña -->
+                <div class="form-group floating">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Contraseña</label>
+                    <i class="fas fa-lock"></i> <!-- Ícono -->
+                    <div class="underline"></div> <!-- Subrayado animado -->
+                    <!-- Botón para mostrar/ocultar contraseña -->
+                    <button type="button" class="show-password" aria-label="Mostrar contraseña">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <!-- Botón de submit -->
+                <button type="submit" class="login-btn">
+                    <span>Acceder</span>
+                    <div class="btn-shine"></div> <!-- Efecto de brillo al hover -->
+                </button>
+            </form>
+            
+            <!-- Efecto de partículas -->
+            <div class="particles" id="particles-js"></div>
+        </div>
+        
+        <!-- Notificación de error -->
+        <div class="notification" id="notification"></div>
+    </div>
+    
+    <!-- Script para partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Script principal -->
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+/* Variables de colores y estilos */
+:root {
+    --primary: #4361ee;       /* Color primario azul */
+    --primary-dark: #3a56d4;  /* Color primario oscuro */
+    --secondary: #3f37c9;     /* Color secundario */
+    --text: #2b2d42;          /* Color de texto principal */
+    --light: #f8f9fa;         /* Color claro */
+    --error: #ef233c;         /* Color para errores */
+    --success: #4cc9f0;       /* Color para éxito */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra predeterminada */
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos del body */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Shader de fondo animado */
+.background-shader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    animation: pulse 15s infinite alternate; /* Animación de pulsación */
+    z-index: -1;
+}
+
+/* Animación para el shader */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 0.9; }
+}
+
+/* Contenedor principal del login */
+.login-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    z-index: 10;
+}
+
+/* Tarjeta de login */
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    animation: fadeIn 0.8s ease-out forwards; /* Animación de entrada */
+}
+
+/* Efecto de brillo en la tarjeta */
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.3) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite; /* Animación de brillo */
+}
+
+/* Animación de brillo */
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor del logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+/* Estilos del logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 5px 15px rgba(67, 97, 238, 0.3));
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover en logo */
+.logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Texto del logo */
+.logo-text {
+    font-size: 1.8rem;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Parte del texto del logo en color primario */
+.logo-text span {
+    color: var(--primary);
+}
+
+/* Formulario de login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Grupo de formulario */
+.form-group {
+    position: relative;
+}
+
+/* Input con label flotante */
+.form-group.floating input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.5rem; /* Espacio para ícono */
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+/* Estilo cuando el input está enfocado */
+.form-group.floating input:focus {
+    outline: none;
+    border-bottom-color: var(--primary);
+}
+
+/* Label flotante */
+.form-group.floating label {
+    position: absolute;
+    left: 2.5rem;
+    top: 1rem;
+    color: #999;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Animación del label cuando el input tiene contenido */
+.form-group.floating input:focus + label,
+.form-group.floating input:not(:placeholder-shown) + label {
+    top: -0.8rem;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+/* Íconos del formulario */
+.form-group i {
+    position: absolute;
+    left: 0.5rem;
+    top: 1rem;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+/* Cambio de color en ícono cuando el input está enfocado */
+.form-group input:focus ~ i {
+    color: var(--primary);
+}
+
+/* Subrayado animado */
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.4s ease;
+}
+
+/* Animación del subrayado */
+.form-group input:focus ~ .underline {
+    width: 100%;
+}
+
+/* Botón para mostrar contraseña */
+.show-password {
+    position: absolute;
+    right: 0;
+    top: 1rem;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover en botón de mostrar contraseña */
+.show-password:hover {
+    color: var(--primary);
+}
+
+/* Botón de login */
+.login-btn {
+    position: relative;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+/* Efecto hover en botón */
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.6);
+}
+
+/* Efecto active en botón */
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* Texto del botón */
+.login-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Efecto de brillo en el botón */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255,255,255,0.3) 50%,
+        transparent 100%
+    );
+    transition: left 0.7s ease;
+}
+
+/* Animación del brillo al hacer hover */
+.login-btn:hover .btn-shine {
+    left: 100%;
+}
+
+/* Notificaciones */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    background: var(--error);
+    color: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transform: translateX(150%);
+    transition: transform 0.4s ease;
+    z-index: 1000;
+}
+
+/* Clase para mostrar notificación */
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Canvas de partículas */
+.particles-js-canvas-el {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
