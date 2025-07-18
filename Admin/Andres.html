@@ -65,6 +65,14 @@
             border-left-color: var(--danger-color);
         }
         
+        .stat-card.info {
+            border-left-color: var(--info-color);
+        }
+        
+        .stat-card.success {
+            border-left-color: var(--success-color);
+        }
+        
         .table-responsive {
             overflow-x: auto;
         }
@@ -138,9 +146,73 @@
             color: #666;
         }
         
-        .search-result-item .price {
+        .sale-detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sale-detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .sale-total-row {
             font-weight: bold;
-            color: var(--primary-color);
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .badge-stock-low {
+            background-color: #fce4d6;
+            color: #e55353;
+        }
+        
+        .badge-stock-out {
+            background-color: #f1e1e3;
+            color: #e55353;
+        }
+        
+        .badge-stock-ok {
+            background-color: #d7f0db;
+            color: #2eb85c;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background-color: #d7f0db;
+            color: #2eb85c;
+        }
+        
+        .status-inactive {
+            background-color: #e9ecef;
+            color: #4f5d73;
+        }
+        
+        .status-completed {
+            background-color: #d7f0db;
+            color: #2eb85c;
+        }
+        
+        .status-draft {
+            background-color: #fce4d6;
+            color: #e55353;
         }
     </style>
 </head>
@@ -166,7 +238,7 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
-                            <i class="fas fa-fw fa-tachometer-alt me-2"></i>Dashboard
+                            <i class="fas fa-fw fa-tachometer-alt me-2"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
@@ -284,6 +356,76 @@
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-times-circle fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card info h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Ventas Totales</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalSales">$0</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card success h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Ventas Este Mes</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="monthlySales">$0</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card warning h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                    Ventas Este Año</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="yearlySales">$0</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="card stat-card danger h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                    Clientes Nuevos</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="newCustomers">0</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-users fa-2x text-gray-300"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -795,6 +937,62 @@
         </div>
     </div>
 
+    <!-- Modal para ver detalles de venta -->
+    <div class="modal fade" id="viewSaleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles de Venta <span id="saleIdHeader"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div><strong>Fecha:</strong> <span id="saleDateDetail"></span></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div><strong>Cliente:</strong> <span id="saleCustomerDetail"></span></div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="mb-3">Productos Vendidos</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="saleProductsDetail">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="sale-summary mt-4">
+                        <div class="sale-item d-flex justify-content-between">
+                            <span>Subtotal:</span>
+                            <span id="saleSubtotalDetail">$0.00</span>
+                        </div>
+                        <div class="sale-item d-flex justify-content-between">
+                            <span>IVA (<span id="saleTaxRateDetail">19</span>%):</span>
+                            <span id="saleTaxDetail">$0.00</span>
+                        </div>
+                        <div class="sale-item sale-totals d-flex justify-content-between">
+                            <span>Total:</span>
+                            <span id="saleTotalDetail">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts necesarios -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -828,6 +1026,7 @@
         // Variables para nueva venta
         let saleProducts = [];
         let selectedProduct = null;
+        let lastSaleId = 1254; // Último ID de venta
 
         // Inicialización cuando el DOM está listo
         $(document).ready(function() {
@@ -845,128 +1044,156 @@
             
             // Actualizar estadísticas
             updateStats();
+            
+            // Inicializar gráficos
+            initializeCharts();
         });
 
+        function initializeCharts() {
+            // Datos de ejemplo para gráficos
+            const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
+            const salesDataExample = [500000, 700000, 450000, 800000, 600000, 900000, 750000];
+            
+            const topProducts = ['Cuadernos', 'Lápices', 'Borradores', 'Tajalápices', 'Resaltadores'];
+            const salesQuantities = [150, 300, 80, 50, 120];
+            
+            createCharts(months, salesDataExample, topProducts, salesQuantities);
+        }
+
         function loadInitialData() {
-            // Datos de ejemplo para el inventario
-            inventoryData = [
-                {
-                    id: "1",
-                    code: "1",
-                    name: "marcador borrable offi esco",
-                    reference: "",
-                    location: "vitrina 1",
-                    quantity: 12,
-                    group: "papeleria",
-                    status: "activo",
-                    unitValue: 2908.33,
-                    costPrice: 34900.00,
-                    salePrice: 31991.67
-                },
-                {
-                    id: "2",
-                    code: "2",
-                    name: "marcador borrable offi esco grande",
-                    reference: "",
-                    location: "vitrina 1",
-                    quantity: 24,
-                    group: "papeleria",
-                    status: "activo",
-                    unitValue: 1537.50,
-                    costPrice: 36900.00,
-                    salePrice: 35362.50
-                },
-                {
-                    id: "3",
-                    code: "3",
-                    name: "marcador sharpie",
-                    reference: "",
-                    location: "vitrina 1",
-                    quantity: 12,
-                    group: "papeleria",
-                    status: "activo",
-                    unitValue: 1333.33,
-                    costPrice: 16000.00,
-                    salePrice: 14666.67
-                },
-                {
-                    id: "4",
-                    code: "4",
-                    name: "Cuaderno cuadriculado",
-                    reference: "100 hojas",
-                    location: "estante 2",
-                    quantity: 3,
-                    group: "escolar",
-                    status: "activo",
-                    unitValue: 5000,
-                    costPrice: 4500,
-                    salePrice: 6000
-                },
-                {
-                    id: "5",
-                    code: "5",
-                    name: "Lápiz HB",
-                    reference: "Paquete x12",
-                    location: "estante 3",
-                    quantity: 0,
-                    group: "escolar",
-                    status: "activo",
-                    unitValue: 1000,
-                    costPrice: 800,
-                    salePrice: 1200
+            // Cargar datos guardados si existen
+            const savedData = localStorage.getItem('papeleriaData');
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                inventoryData = parsedData.inventory || [];
+                salesData = parsedData.sales || [];
+                usersData = parsedData.users || [];
+                
+                // Obtener el último ID de venta
+                if (salesData.length > 0) {
+                    lastSaleId = Math.max(...salesData.map(s => parseInt(s.id)));
                 }
-            ];
-            
-            // Datos de ejemplo para ventas
-            salesData = [
-                {
-                    id: "1254",
-                    date: "15/07/2023",
-                    customer: "Juan Pérez",
-                    products: [
-                        {id: "1", name: "marcador borrable offi esco", quantity: 2, price: 31991.67},
-                        {id: "3", name: "marcador sharpie", quantity: 1, price: 14666.67}
-                    ],
-                    total: 78650.01,
-                    status: "Completada"
-                },
-                {
-                    id: "1253",
-                    date: "14/07/2023",
-                    customer: "María Gómez",
-                    products: [
-                        {id: "2", name: "marcador borrable offi esco grande", quantity: 3, price: 35362.50},
-                        {id: "4", name: "Cuaderno cuadriculado", quantity: 2, price: 6000}
-                    ],
-                    total: 118087.50,
-                    status: "Completada"
-                }
-            ];
-            
-            // Datos de ejemplo para usuarios
-            usersData = [
-                {
-                    id: "1",
-                    name: "Administrador",
-                    email: "admin@papeleria.com",
-                    role: "Administrador",
-                    status: "activo"
-                },
-                {
-                    id: "2",
-                    name: "Vendedor 1",
-                    email: "vendedor1@papeleria.com",
-                    role: "Ventas",
-                    status: "activo"
-                },
-                {
-                    id: "3",
-                    name: "Vendedor 2",
-                    email: "vendedor2@papeleria.com",
-                    role: "Ventas",
-                    status: "inactivo"
-                }
-            ];
+            } else {
+                // Datos de ejemplo para el inventario
+                inventoryData = [
+                    {
+                        id: "1",
+                        code: "1",
+                        name: "marcador borrable offi esco",
+                        reference: "",
+                        location: "vitrina 1",
+                        quantity: 12,
+                        group: "papeleria",
+                        status: "activo",
+                        unitValue: 2908.33,
+                        costPrice: 34900.00,
+                        salePrice: 31991.67
+                    },
+                    {
+                        id: "2",
+                        code: "2",
+                        name: "marcador borrable offi esco grande",
+                        reference: "",
+                        location: "vitrina 1",
+                        quantity: 24,
+                        group: "papeleria",
+                        status: "activo",
+                        unitValue: 1537.50,
+                        costPrice: 36900.00,
+                        salePrice: 35362.50
+                    },
+                    {
+                        id: "3",
+                        code: "3",
+                        name: "marcador sharpie",
+                        reference: "",
+                        location: "vitrina 1",
+                        quantity: 12,
+                        group: "papeleria",
+                        status: "activo",
+                        unitValue: 1333.33,
+                        costPrice: 16000.00,
+                        salePrice: 14666.67
+                    },
+                    {
+                        id: "4",
+                        code: "4",
+                        name: "Cuaderno cuadriculado",
+                        reference: "100 hojas",
+                        location: "estante 2",
+                        quantity: 3,
+                        group: "escolar",
+                        status: "activo",
+                        unitValue: 5000,
+                        costPrice: 4500,
+                        salePrice: 6000
+                    },
+                    {
+                        id: "5",
+                        code: "5",
+                        name: "Lápiz HB",
+                        reference: "Paquete x12",
+                        location: "estante 3",
+                        quantity: 0,
+                        group: "escolar",
+                        status: "activo",
+                        unitValue: 1000,
+                        costPrice: 800,
+                        salePrice: 1200
+                    }
+                ];
+                
+                // Datos de ejemplo para ventas
+                salesData = [
+                    {
+                        id: "1254",
+                        date: "15/07/2023",
+                        customer: "Juan Pérez",
+                        products: [
+                            {id: "1", name: "marcador borrable offi esco", quantity: 2, price: 31991.67},
+                            {id: "3", name: "marcador sharpie", quantity: 1, price: 14666.67}
+                        ],
+                        total: 78650.01,
+                        status: "Completada"
+                    },
+                    {
+                        id: "1253",
+                        date: "14/07/2023",
+                        customer: "María Gómez",
+                        products: [
+                            {id: "2", name: "marcador borrable offi esco grande", quantity: 3, price: 35362.50},
+                            {id: "4", name: "Cuaderno cuadriculado", quantity: 2, price: 6000}
+                        ],
+                        total: 118087.50,
+                        status: "Completada"
+                    }
+                ];
+                
+                // Datos de ejemplo para usuarios
+                usersData = [
+                    {
+                        id: "1",
+                        name: "Administrador",
+                        email: "admin@papeleria.com",
+                        role: "Administrador",
+                        status: "activo"
+                    },
+                    {
+                        id: "2",
+                        name: "Vendedor 1",
+                        email: "vendedor1@papeleria.com",
+                        role: "Ventas",
+                        status: "activo"
+                    },
+                    {
+                        id: "3",
+                        name: "Vendedor 2",
+                        email: "vendedor2@papeleria.com",
+                        role: "Ventas",
+                        status: "inactivo"
+                    }
+                ];
+            }
             
             // Cargar configuraciones guardadas si existen
             const savedSettings = localStorage.getItem('papeleriaSettings');
@@ -1015,27 +1242,31 @@
         }
         
         function shadeColor(color, percent) {
-            let R = parseInt(color.substring(1,3), 16);
-            let G = parseInt(color.substring(3,5), 16);
-            let B = parseInt(color.substring(5,7), 16);
+            // Convertir color hexadecimal a RGB
+            let R = parseInt(color.substring(1, 3), 16);
+            let G = parseInt(color.substring(3, 5), 16);
+            let B = parseInt(color.substring(5, 7), 16);
 
+            // Ajustar según el porcentaje (negativo para oscurecer)
             R = parseInt(R * (100 + percent) / 100);
             G = parseInt(G * (100 + percent) / 100);
             B = parseInt(B * (100 + percent) / 100);
 
-            R = (R<255)?R:255;  
-            G = (G<255)?G:255;  
-            B = (B<255)?B:255;  
+            // Limitar valores entre 0-255
+            R = R < 0 ? 0 : R;
+            G = G < 0 ? 0 : G;
+            B = B < 0 ? 0 : B;
+            
+            R = R > 255 ? 255 : R;
+            G = G > 255 ? 255 : G;
+            B = B > 255 ? 255 : B;
 
-            R = Math.round(R);
-            G = Math.round(G);
-            B = Math.round(B);
+            // Convertir a hexadecimal
+            const RR = R.toString(16).padStart(2, '0');
+            const GG = G.toString(16).padStart(2, '0');
+            const BB = B.toString(16).padStart(2, '0');
 
-            const RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-            const GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-            const BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
-
-            return "#"+RR+GG+BB;
+            return `#${RR}${GG}${BB}`;
         }
 
         function initDataTables() {
@@ -1140,7 +1371,13 @@
             // Botón de cerrar sesión
             $('#logoutBtn').click(function() {
                 if (confirm('¿Está seguro que desea cerrar sesión?')) {
-                    // Aquí iría la lógica para cerrar sesión
+                    // Guardar estado actual en localStorage
+                    localStorage.setItem('papeleriaData', JSON.stringify({
+                        inventory: inventoryData,
+                        sales: salesData,
+                        users: usersData
+                    }));
+                    
                     showToast('Sesión cerrada correctamente', 'success');
                     setTimeout(() => {
                         window.location.href = 'index.html';
@@ -1200,6 +1437,11 @@
             // Buscar productos para venta
             $('#searchProductBtn').click(searchProductsForSale);
             $('#productSearch').on('input', searchProductsForSale);
+            $('#productSearch').on('focus', function() {
+                if ($('#productSearch').val().trim()) {
+                    searchProductsForSale();
+                }
+            });
             
             // Finalizar venta
             $('#finalizeSaleBtn').click(finalizeSale);
@@ -1460,22 +1702,32 @@
             table.clear();
             
             inventoryData.forEach(product => {
-                const statusBadge = product.status === 'activo' ? 
-                    '<span class="badge bg-success">Activo</span>' : 
-                    '<span class="badge bg-secondary">Inactivo</span>';
+                let statusBadge = '';
+                if (product.status === 'activo') {
+                    statusBadge = '<span class="status-badge status-active">Activo</span>';
+                } else {
+                    statusBadge = '<span class="status-badge status-inactive">Inactivo</span>';
+                }
                 
-                const quantityCell = product.quantity <= 0 ? 
-                    `<span class="text-danger">${product.quantity}</span>` : 
-                    (product.quantity < settings.lowStockThreshold ? 
-                        `<span class="text-warning">${product.quantity}</span>` : 
-                        product.quantity);
+                let quantityDisplay = product.quantity;
+                let quantityClass = '';
+                
+                if (product.quantity <= 0) {
+                    quantityDisplay = `<span class="text-danger">${product.quantity}</span>`;
+                    quantityClass = 'badge-stock-out';
+                } else if (product.quantity < settings.lowStockThreshold) {
+                    quantityDisplay = `<span class="text-warning">${product.quantity}</span>`;
+                    quantityClass = 'badge-stock-low';
+                } else {
+                    quantityClass = 'badge-stock-ok';
+                }
                 
                 table.row.add([
                     product.code,
                     product.name,
                     product.reference,
                     product.location,
-                    quantityCell,
+                    quantityDisplay,
                     product.group ? product.group.charAt(0).toUpperCase() + product.group.slice(1) : '',
                     statusBadge,
                     `${settings.currency}${product.unitValue.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`,
@@ -1513,11 +1765,16 @@
             table.clear();
             
             salesData.forEach(sale => {
-                const productsList = sale.products.map(p => `${p.name} (x${p.quantity})`).join('<br>');
+                const productsList = sale.products.map(p => 
+                    `${p.name} (x${p.quantity})`
+                ).join('<br>');
                 
-                const statusBadge = sale.status === 'Completada' ? 
-                    '<span class="badge bg-success">Completada</span>' : 
-                    '<span class="badge bg-warning">Borrador</span>';
+                let statusBadge = '';
+                if (sale.status === 'Completada') {
+                    statusBadge = '<span class="status-badge status-completed">Completada</span>';
+                } else {
+                    statusBadge = '<span class="status-badge status-draft">Borrador</span>';
+                }
                 
                 table.row.add([
                     sale.id,
@@ -1558,9 +1815,12 @@
             table.clear();
             
             usersData.forEach(user => {
-                const statusBadge = user.status === 'activo' ? 
-                    '<span class="badge bg-success">Activo</span>' : 
-                    '<span class="badge bg-secondary">Inactivo</span>';
+                let statusBadge = '';
+                if (user.status === 'activo') {
+                    statusBadge = '<span class="status-badge status-active">Activo</span>';
+                } else {
+                    statusBadge = '<span class="status-badge status-inactive">Inactivo</span>';
+                }
                 
                 table.row.add([
                     user.id,
@@ -1627,12 +1887,40 @@
                 return;
             }
             
-            // Aquí podrías mostrar un modal con los detalles completos de la venta
-            const productsList = sale.products.map(p => 
-                `${p.name} - ${p.quantity} x ${settings.currency}${p.price.toLocaleString('es-CO')} = ${settings.currency}${(p.quantity * p.price).toLocaleString('es-CO')}`
-            ).join('\n');
+            // Llenar el modal con los datos
+            $('#saleIdHeader').text(`#${sale.id}`);
+            $('#saleDateDetail').text(sale.date);
+            $('#saleCustomerDetail').text(sale.customer);
             
-            alert(`Detalles de Venta #${sale.id}\n\nFecha: ${sale.date}\nCliente: ${sale.customer}\n\nProductos:\n${productsList}\n\nTotal: ${settings.currency}${sale.total.toLocaleString('es-CO')}`);
+            // Calcular subtotal
+            const subtotal = sale.products.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+            const tax = subtotal * (settings.taxRate / 100);
+            const total = subtotal + tax;
+            
+            // Llenar la tabla de productos
+            const productsBody = $('#saleProductsDetail');
+            productsBody.empty();
+            
+            sale.products.forEach(product => {
+                const total = product.quantity * product.price;
+                productsBody.append(`
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.quantity}</td>
+                        <td>${settings.currency}${product.price.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                        <td>${settings.currency}${total.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                    </tr>
+                `);
+            });
+            
+            // Llenar totales
+            $('#saleSubtotalDetail').text(`${settings.currency}${subtotal.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            $('#saleTaxRateDetail').text(settings.taxRate);
+            $('#saleTaxDetail').text(`${settings.currency}${tax.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            $('#saleTotalDetail').text(`${settings.currency}${total.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            
+            // Mostrar el modal
+            $('#viewSaleModal').modal('show');
         }
         
         function editUser(userId) {
@@ -1757,6 +2045,9 @@
             updateInventoryTable();
             updateStats();
             
+            // Guardar datos en localStorage
+            saveDataToLocalStorage();
+            
             // Cerrar modal
             $('#productModal').modal('hide');
         }
@@ -1791,6 +2082,12 @@
         }
 
         function updateStats() {
+            // Fecha actual
+            const today = new Date();
+            const todayFormatted = today.toLocaleDateString('es-CO');
+            const currentMonth = today.getMonth() + 1;
+            const currentYear = today.getFullYear();
+            
             // Actualizar contadores
             $('#totalProducts').text(inventoryData.length);
             
@@ -1803,12 +2100,35 @@
             $('#outOfStock').text(outOfStockCount);
             
             // Calcular ventas de hoy
-            const today = new Date().toLocaleDateString('es-CO');
             const todaySalesTotal = salesData
-                .filter(sale => sale.date === today)
+                .filter(sale => sale.date === todayFormatted)
                 .reduce((sum, sale) => sum + sale.total, 0);
             
             $('#todaySales').text(`${settings.currency}${todaySalesTotal.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            
+            // Calcular ventas totales (todos los tiempos)
+            const totalSalesAllTime = salesData.reduce((sum, sale) => sum + sale.total, 0);
+            $('#totalSales').text(`${settings.currency}${totalSalesAllTime.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            
+            // Calcular ventas del mes actual
+            const monthlySales = salesData
+                .filter(sale => {
+                    const saleDate = new Date(sale.date);
+                    return saleDate.getMonth() + 1 === currentMonth && saleDate.getFullYear() === currentYear;
+                })
+                .reduce((sum, sale) => sum + sale.total, 0);
+            
+            $('#monthlySales').text(`${settings.currency}${monthlySales.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+            
+            // Calcular ventas del año actual
+            const yearlySales = salesData
+                .filter(sale => {
+                    const saleDate = new Date(sale.date);
+                    return saleDate.getFullYear() === currentYear;
+                })
+                .reduce((sum, sale) => sum + sale.total, 0);
+            
+            $('#yearlySales').text(`${settings.currency}${yearlySales.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
             
             // Actualizar gráficos
             updateCharts();
@@ -1842,6 +2162,89 @@
                 productsChart.data.datasets[0].data = productQuantities;
                 productsChart.update();
             }
+            
+            // Actualizar gráfico de ventas mensuales
+            const monthlySales = {};
+            salesData.forEach(sale => {
+                const saleDate = new Date(sale.date);
+                const monthYear = `${saleDate.getMonth() + 1}/${saleDate.getFullYear()}`;
+                
+                if (!monthlySales[monthYear]) {
+                    monthlySales[monthYear] = 0;
+                }
+                monthlySales[monthYear] += sale.total;
+            });
+            
+            const months = Object.keys(monthlySales);
+            const salesAmounts = months.map(m => monthlySales[m]);
+            
+            // Si el gráfico ya existe, actualizarlo; de lo contrario, crearlo
+            const salesChart = Chart.getChart('salesChart');
+            if (salesChart) {
+                salesChart.data.labels = months;
+                salesChart.data.datasets[0].data = salesAmounts;
+                salesChart.update();
+            } else {
+                createCharts(months, salesAmounts, productNames, productQuantities);
+            }
+        }
+        
+        function createCharts(months, salesAmounts, productNames, productQuantities) {
+            // Gráfico de ventas mensuales
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            new Chart(salesCtx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Ventas Mensuales',
+                        backgroundColor: 'rgba(78, 115, 223, 0.5)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        borderWidth: 1,
+                        data: salesAmounts
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Gráfico de productos más vendidos
+            const productsCtx = document.getElementById('productsChart').getContext('2d');
+            new Chart(productsCtx, {
+                type: 'pie',
+                data: {
+                    labels: productNames,
+                    datasets: [{
+                        data: productQuantities,
+                        backgroundColor: [
+                            'rgba(78, 115, 223, 0.5)',
+                            'rgba(28, 200, 138, 0.5)',
+                            'rgba(54, 185, 204, 0.5)',
+                            'rgba(246, 194, 62, 0.5)',
+                            'rgba(231, 74, 59, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(78, 115, 223, 1)',
+                            'rgba(28, 200, 138, 1)',
+                            'rgba(54, 185, 204, 1)',
+                            'rgba(246, 194, 62, 1)',
+                            'rgba(231, 74, 59, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
         }
         
         function updateRecentActivity() {
@@ -2072,60 +2475,81 @@
             }
         }
         
+        function saveDataToLocalStorage() {
+            localStorage.setItem('papeleriaData', JSON.stringify({
+                inventory: inventoryData,
+                sales: salesData,
+                users: usersData
+            }));
+        }
+        
         // Funciones para nueva venta
         
         function searchProductsForSale() {
-    const query = $('#productSearch').val().trim();
-    if (!query) {
-        $('#productSearchResults').hide();
-        return;
-    }
-    
-    const lowerQuery = query.toLowerCase();
-    const results = inventoryData.filter(product => 
-        product.status === 'activo' && 
-        (product.code.toLowerCase().includes(lowerQuery) || 
-        product.name.toLowerCase().includes(lowerQuery))
-    );
-    
-    const resultsContainer = $('#productSearchResults');
-    resultsContainer.empty();
-    
-    if (results.length === 0) {
-        resultsContainer.append('<div class="search-result-item">No se encontraron productos</div>');
-    } else {
-        results.forEach(product => {
-            const item = $(`
-                <div class="search-result-item" data-id="${product.id}">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <strong>${product.code}</strong> - ${product.name}
-                            <div class="stock">Disponibles: ${product.quantity}</div>
-                        </div>
-                        <div class="price">${settings.currency}${product.salePrice.toLocaleString('es-CO')}</div>
-                    </div>
-                </div>
-            `);
-            
-            item.click(function() {
-                addProductToSale(product);
-                $('#productSearch').val('');
+            const query = $('#productSearch').val().trim().toLowerCase();
+            if (!query) {
                 $('#productSearchResults').hide();
-            });
+                return;
+            }
+
+            // Filtrar solo productos activos y con stock positivo
+            const results = inventoryData.filter(product => 
+                product.status === 'activo' && 
+                product.quantity > 0 &&
+                (product.code.toLowerCase().includes(query) || 
+                 product.name.toLowerCase().includes(query))
+            );
+
+            const resultsContainer = $('#productSearchResults');
+            resultsContainer.empty();
             
-            resultsContainer.append(item);
-        });
-    }
-    
-    resultsContainer.show();
-}
+            if (results.length === 0) {
+                resultsContainer.append('<div class="search-result-item">No se encontraron productos</div>');
+            } else {
+                results.forEach(product => {
+                    const stockStatus = product.quantity <= 0 ? 
+                        '<span class="text-danger">Agotado</span>' : 
+                        (product.quantity < settings.lowStockThreshold ? 
+                         `<span class="text-warning">Bajo stock (${product.quantity})</span>` : 
+                         `Disponible (${product.quantity})`);
+                    
+                    const item = $(`
+                        <div class="search-result-item" data-id="${product.id}">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong>${product.code}</strong> - ${product.name}
+                                    <div class="stock">${stockStatus}</div>
+                                </div>
+                                <div class="price">${settings.currency}${product.salePrice.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+                            </div>
+                        </div>
+                    `);
+                    
+                    item.click(function() {
+                        addProductToSale(product);
+                        $('#productSearch').val('');
+                        $('#productSearchResults').hide();
+                    });
+                    
+                    resultsContainer.append(item);
+                });
+            }
+            
+            resultsContainer.show();
+        }
         
         function addProductToSale(product) {
+            // Verificar stock disponible
+            if (product.quantity <= 0) {
+                showToast('Producto agotado, no se puede agregar', 'danger');
+                return;
+            }
+
             // Verificar si el producto ya está en la venta
             const existingProductIndex = saleProducts.findIndex(p => p.id === product.id);
             
             if (existingProductIndex !== -1) {
-                // Incrementar cantidad si ya existe
+                // Incrementar cantidad si ya existe y hay stock suficiente
                 if (saleProducts[existingProductIndex].quantity < product.quantity) {
                     saleProducts[existingProductIndex].quantity++;
                 } else {
@@ -2169,7 +2593,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div><strong>${product.name}</strong></div>
-                                <div class="small text-muted">Código: ${product.code} | Precio: ${settings.currency}${product.price.toLocaleString('es-CO')}</div>
+                                <div class="small text-muted">
+                                    Código: ${product.code} | 
+                                    Precio: ${settings.currency}${product.price.toLocaleString('es-CO')} x ${product.quantity} = 
+                                    <strong>${settings.currency}${(product.price * product.quantity).toLocaleString('es-CO')}</strong>
+                                </div>
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="btn-group btn-group-sm me-2">
@@ -2267,8 +2695,9 @@
             const total = subtotal + tax;
             
             // Crear objeto venta
+            lastSaleId++;
             const newSale = {
-                id: (salesData.length + 1).toString(), // ID incremental simple
+                id: lastSaleId.toString(),
                 date: new Date(saleDate).toLocaleDateString('es-CO'),
                 customer: customerName,
                 products: saleProducts.map(p => ({
@@ -2298,6 +2727,9 @@
             updateInventoryTable();
             updateStats();
             
+            // Guardar datos en localStorage
+            saveDataToLocalStorage();
+            
             // Registrar actividad
             addActivity(`Nueva venta ${status.toLowerCase()}: #${newSale.id} - ${settings.currency}${total.toLocaleString('es-CO')}`);
             
@@ -2311,4 +2743,3 @@
     </script>
 </body>
 </html>
-    
